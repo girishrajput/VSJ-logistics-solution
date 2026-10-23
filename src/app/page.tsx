@@ -493,15 +493,21 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto bg-brand-navy-dark rounded-3xl p-8 sm:p-12 lg:p-16 border border-brand-navy-light/50 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
             <div className="md:col-span-4 text-center space-y-4">
-              <div className="w-32 h-32 mx-auto rounded-3xl bg-gradient-to-tr from-brand-orange to-amber-500 p-1 shadow-xl">
-                <div className="w-full h-full bg-brand-navy rounded-[22px] flex items-center justify-center text-white">
-                  <span className="text-4xl font-black text-brand-orange">VK</span>
+              <div className="w-36 h-36 mx-auto rounded-3xl bg-gradient-to-tr from-brand-orange to-amber-500 p-1 shadow-xl">
+                <div className="w-full h-full rounded-[22px] overflow-hidden relative">
+                  <Image
+                    src="/vikas-kumar.jpg"
+                    alt="Vikas Kumar - Founder & Operations Director, VSJ Logistics Solution"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">{COMPANY_INFO.founder}</h3>
                 <p className="text-sm text-brand-orange font-semibold">{COMPANY_INFO.title}</p>
-                <p className="text-xs text-slate-400 mt-0.5">VSJ Logistics Solution</p>
+                <p className="text-xs text-slate-400 mt-0.5">VSJ Logistics Solution • Naroda Hub</p>
               </div>
 
               <div className="pt-2 flex flex-col gap-2">

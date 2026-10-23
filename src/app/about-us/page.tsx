@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   ShieldCheck, 
   Truck, 
@@ -146,8 +147,14 @@ export default function AboutUsPage() {
       <section className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8 border-y border-slate-200">
         <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-            <div className="w-24 h-24 rounded-2xl bg-brand-navy flex items-center justify-center text-white text-3xl font-black shrink-0 border-2 border-brand-orange">
-              VK
+            <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0 border-2 border-brand-orange shadow-md relative">
+              <Image
+                src="/vikas-kumar.jpg"
+                alt="Vikas Kumar - Founder & Executive Director, VSJ Logistics Solution"
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="space-y-1.5 text-center sm:text-left">
               <span className="text-xs font-bold text-brand-orange uppercase tracking-wide">Founder & Executive Director</span>

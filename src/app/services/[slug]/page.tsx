@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { 
   Truck, 
@@ -331,8 +332,14 @@ export default function ServiceDetailPage({ params }: PageProps) {
               {/* Direct Booking Desk Card */}
               <div className="bg-brand-navy rounded-3xl p-6 text-white border border-slate-700 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold">
-                    VK
+                  <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-brand-orange shadow-md relative">
+                    <Image
+                      src="/vikas-kumar.jpg"
+                      alt="Vikas Kumar - Operations Director, VSJ Logistics"
+                      width={100}
+                      height={100}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold">{COMPANY_INFO.founder}</h4>

@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { 
   MapPin, 
   Phone, 
@@ -157,13 +158,24 @@ export default function ContactUsPage() {
               </div>
 
               {/* Grievance & Escalation Desk Anchor (Checkpoint 8) */}
-              <div id="grievance" className="pt-4 border-t border-slate-200 space-y-2 scroll-mt-24">
+              <div id="grievance" className="pt-4 border-t border-slate-200 space-y-3 scroll-mt-24">
                 <span className="text-xs font-bold text-brand-orange uppercase tracking-wider block">
                   Grievance & Escalation Officer
                 </span>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  For formal POD disputes, demurrage reconciliations, or urgent cargo escalation, reach out directly to <strong>{COMPANY_INFO.founder}</strong> (Operations Director) at <a href={`tel:${COMPANY_INFO.primaryPhoneRaw}`} className="text-brand-navy font-semibold hover:underline">{COMPANY_INFO.primaryPhone}</a> or via email at <a href={`mailto:${COMPANY_INFO.email}`} className="text-brand-navy font-semibold hover:underline">{COMPANY_INFO.email}</a>.
-                </p>
+                <div className="flex items-start gap-3.5">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-brand-orange shadow-sm relative">
+                    <Image
+                      src="/vikas-kumar.jpg"
+                      alt="Vikas Kumar - Operations Director, VSJ Logistics"
+                      width={100}
+                      height={100}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    For formal POD disputes, demurrage reconciliations, or urgent cargo escalation, reach out directly to <strong>{COMPANY_INFO.founder}</strong> (Operations Director) at <a href={`tel:${COMPANY_INFO.primaryPhoneRaw}`} className="text-brand-navy font-semibold hover:underline">{COMPANY_INFO.primaryPhone}</a> or via email at <a href={`mailto:${COMPANY_INFO.email}`} className="text-brand-navy font-semibold hover:underline">{COMPANY_INFO.email}</a>.
+                  </p>
+                </div>
               </div>
             </div>
 
