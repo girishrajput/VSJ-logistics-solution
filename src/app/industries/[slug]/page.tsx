@@ -18,7 +18,6 @@ import { COMPANY_INFO, SITE_URL } from "@/data/company";
 import { INDUSTRY_SECTORS, getPageBySlug, CORE_SERVICES, AHMEDABAD_LOCATIONS, shortName } from "@/data/pages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import TrustBadges from "@/components/TrustBadges";
-import QuoteCalculator from "@/components/QuoteCalculator";
 import JsonLd from "@/components/JsonLd";
 
 interface PageProps {
@@ -247,10 +246,68 @@ export default function IndustryDetailPage({ params }: PageProps) {
 
           <div className="lg:col-span-5 space-y-8">
             <div className="sticky top-24 space-y-8">
-              <QuoteCalculator
-                initialService="Full Truckload (32ft Container)"
-                initialOrigin="Naroda GIDC Phase 1, Ahmedabad (HQ Hub)"
-              />
+              {/* Industry Transport Booking Card */}
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Industry Contract Logistics</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-navy">
+                    {page.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Custom monthly contracts, dedicated vehicles, and immediate spot placements from our Naroda GIDC Phase 1 fleet depot.
+                  </p>
+                </div>
+
+                <div className="space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>100% Weatherproof</strong> 32ft MXL closed containers</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Real-Time GPS</strong> telematics & speed monitoring</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Formal GST Bilty</strong> & tamper-proof digital e-POD</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Monthly Contracts</strong> with dedicated drivers</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Link
+                    href="/get-a-quote"
+                    className="w-full min-h-[48px] bg-brand-orange hover:bg-brand-orange-dark text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Request Industry Quotation</span>
+                  </Link>
+
+                  <a
+                    href={`https://wa.me/918660567050?text=Hi%20VSJ%20Logistics,%20I%20need%20transport%20services%20for%20${encodeURIComponent(page.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full min-h-[48px] bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>WhatsApp Sector Lead</span>
+                  </a>
+
+                  <a
+                    href={`tel:${COMPANY_INFO.primaryPhoneRaw}`}
+                    className="w-full min-h-[48px] bg-brand-navy hover:bg-brand-navy-dark text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Phone className="w-4 h-4 text-brand-orange" />
+                    <span>Call: {COMPANY_INFO.primaryPhone}</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

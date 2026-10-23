@@ -2,13 +2,12 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Truck, Phone, MessageCircle, ArrowRight, Clock, HelpCircle, MapPin, Route as RouteIcon, Package } from "lucide-react";
+import { Truck, Phone, MessageCircle, ArrowRight, Clock, HelpCircle, MapPin, Route as RouteIcon, Package, FileText, CheckCircle2, ShieldCheck } from "lucide-react";
 import { COMPANY_INFO, SITE_URL } from "@/data/company";
 import { ROUTES, getRouteBySlug } from "@/data/routes";
 import { AHMEDABAD_LOCATIONS, CORE_SERVICES, shortName } from "@/data/pages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import TrustBadges from "@/components/TrustBadges";
-import QuoteCalculator from "@/components/QuoteCalculator";
 import JsonLd from "@/components/JsonLd";
 
 interface PageProps {
@@ -255,7 +254,68 @@ export default function RouteDetailPage({ params }: PageProps) {
 
           <div className="lg:col-span-5">
             <div className="sticky top-24">
-              <QuoteCalculator initialDestination={r.calculatorDestination} />
+              {/* Route Booking & Dispatch Card */}
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                    <RouteIcon className="w-3.5 h-3.5" />
+                    <span>Direct Transit Corridor</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-navy">
+                    Ahmedabad to {r.destination}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Distance: <strong>{r.distanceKm}</strong> • FTL Transit: <strong>{r.transitFtl}</strong> via {r.via}.
+                  </p>
+                </div>
+
+                <div className="space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Direct Loading:</strong> Naroda, Vatva, Sanand, Changodar</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Fleet:</strong> 32ft MXL/SXL Container, 20/24ft Open</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>100% GPS</strong> tracking with automated milestones</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Return Load</strong> competitive commercial pricing</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Link
+                    href="/get-a-quote"
+                    className="w-full min-h-[48px] bg-brand-orange hover:bg-brand-orange-dark text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Request Route Quotation</span>
+                  </Link>
+
+                  <a
+                    href={`https://wa.me/918660567050?text=Hi%20VSJ%20Logistics,%20I%20need%20freight%20rates%20for%20Ahmedabad%20to%20${encodeURIComponent(r.destination)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full min-h-[48px] bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>WhatsApp Route Desk</span>
+                  </a>
+
+                  <a
+                    href={`tel:${COMPANY_INFO.primaryPhoneRaw}`}
+                    className="w-full min-h-[48px] bg-brand-navy hover:bg-brand-navy-dark text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Phone className="w-4 h-4 text-brand-orange" />
+                    <span>Call: {COMPANY_INFO.primaryPhone}</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

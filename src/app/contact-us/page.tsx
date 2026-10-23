@@ -15,7 +15,7 @@ import {
 import { COMPANY_INFO, SITE_URL } from "@/data/company";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
-import QuoteCalculator from "@/components/QuoteCalculator";
+import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -176,9 +176,9 @@ export default function ContactUsPage() {
             </div>
           </div>
 
-          {/* Right Column: Multi-Step Freight Inquiry Form */}
+          {/* Right Column: Direct Dispatch Contact Form */}
           <div className="lg:col-span-7">
-            <QuoteCalculator />
+            <ContactForm />
           </div>
         </div>
       </section>

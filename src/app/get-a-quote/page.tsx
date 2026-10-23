@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { COMPANY_INFO, SITE_URL } from "@/data/company";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import QuoteCalculator from "@/components/QuoteCalculator";
+import CommercialQuoteForm from "@/components/CommercialQuoteForm";
 import TrustBadges from "@/components/TrustBadges";
 import JsonLd from "@/components/JsonLd";
 
@@ -30,7 +30,7 @@ export default function GetAQuotePage() {
       <JsonLd
         pageUrl={`${SITE_URL}/get-a-quote`}
         pageTitle="Get a Freight Quote | VSJ Logistics Solution Naroda Ahmedabad"
-        pageDescription="Interactive multi-step commercial rate calculator for FTL, PTL, and ODC freight originating from Ahmedabad."
+        pageDescription="Commercial freight quotation form for FTL, PTL, and ODC freight originating from Ahmedabad."
       />
 
       <Breadcrumbs items={[{ name: "Get a Quote", url: "/get-a-quote" }]} />
@@ -58,7 +58,7 @@ export default function GetAQuotePage() {
       {/* Main Form Section with Spacious Layout */}
       <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-12">
-          <QuoteCalculator />
+          <CommercialQuoteForm />
 
           {/* Value Proposition Callouts */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

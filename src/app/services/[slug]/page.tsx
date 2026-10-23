@@ -20,7 +20,6 @@ import { COMPANY_INFO, SITE_URL } from "@/data/company";
 import { CORE_SERVICES, getPageBySlug, AHMEDABAD_LOCATIONS, INDUSTRY_SECTORS, shortName } from "@/data/pages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import TrustBadges from "@/components/TrustBadges";
-import QuoteCalculator from "@/components/QuoteCalculator";
 import JsonLd from "@/components/JsonLd";
 
 interface PageProps {
@@ -271,13 +270,63 @@ export default function ServiceDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Right Column: Pre-Configured Rate Calculator */}
+          {/* Right Column: Service Booking & Direct Dispatch */}
           <div className="lg:col-span-5 space-y-8">
             <div className="sticky top-24 space-y-8">
-              <QuoteCalculator 
-                initialService={page.h1.split("Services")[0].trim()}
-                initialOrigin="Naroda GIDC Phase 1, Ahmedabad (HQ Hub)"
-              />
+              {/* Service Dispatch Card */}
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>Instant Vehicle Placement</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-navy">
+                    Book {page.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Direct road transport coordination from our Naroda GIDC Phase 1 depot across Gujarat and India.
+                  </p>
+                </div>
+
+                <div className="space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>15–30 Min</strong> placement in Naroda GIDC</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>100% GPS</strong> telematics & speed monitoring</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>GST Bilty</strong> & tamper-proof digital e-POD</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span><strong>Zero Transshipment</strong> point-to-point transit</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Link
+                    href="/get-a-quote"
+                    className="w-full min-h-[48px] bg-brand-orange hover:bg-brand-orange-dark text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Request Detailed Quotation</span>
+                  </Link>
+
+                  <a
+                    href={`https://wa.me/918660567050?text=Hi%20VSJ%20Logistics,%20I%20need%20a%20rate%20quote%20for%20${encodeURIComponent(page.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full min-h-[48px] bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>WhatsApp Instant Inquiry</span>
+                  </a>
+                </div>
+              </div>
 
               {/* Direct Booking Desk Card */}
               <div className="bg-brand-navy rounded-3xl p-6 text-white border border-slate-700 space-y-4">

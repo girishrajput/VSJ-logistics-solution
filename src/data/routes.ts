@@ -20,7 +20,7 @@ export interface RouteData {
   commonCargo: string[];
   intro: string;
   faqs: { question: string; answer: string }[];
-  /** Matched by QuoteCalculator's estimate logic */
+  /** Normalized destination city name */
   calculatorDestination: string;
 }
 
