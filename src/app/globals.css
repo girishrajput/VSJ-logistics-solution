@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-navy: #0F2042;
+    --safety-orange: #F97316;
+    --slate-bg: #F8FAFC;
+    --muted-gray: #64748B;
+    --divider-gray: #E2E8F0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    color: #1e293b;
+    background-color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.625;
+    overflow-x: clip;
+    max-width: 100%;
+    position: relative;
+  }
+
+  /* Prevent mobile iOS zoom on input focus while keeping touch targets readable */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  /* Visible, high-contrast focus rings for keyboard navigation (a11y) */
+  *:focus-visible {
+    outline: 2px solid #F97316;
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #0F2042;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  /* Headings inside dark (text-white) sections inherit white instead of the navy default above.
+     Without this, hero H1s on service/location/industry pages rendered navy-on-navy (invisible).
+     :where() keeps specificity at 0 so explicit utility classes (text-brand-navy etc.) still win. */
+  :where(.text-white) h1,
+  :where(.text-white) h2,
+  :where(.text-white) h3,
+  :where(.text-white) h4,
+  :where(.text-white) h5,
+  :where(.text-white) h6 {
+    color: inherit;
+  }
+
+  p {
+    line-height: 1.75;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print styles */
+@media print {
+  header, footer, #quote-calculator, .no-print, [role="dialog"] {
+    display: none !important;
+  }
+}
