@@ -65,6 +65,88 @@ const HOMEPAGE_FAQS = [
   },
 ];
 
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  "full-truckload-ftl-ahmedabad": {
+    src: "/images/services/ftl.jpg",
+    alt: "Full Truckload (FTL) Freight - 32ft MXL Container Carrier Ahmedabad",
+  },
+  "part-truckload-ptl-cargo": {
+    src: "/images/services/ptl.jpg",
+    alt: "Part Truckload (PTL) Cargo & Consolidated Freight Distribution",
+  },
+  "warehouse-contract-logistics": {
+    src: "/images/services/warehousing.jpg",
+    alt: "Grade-A Warehouse & Contract Logistics Storage Ahmedabad",
+  },
+  "industrial-project-cargo-transport": {
+    src: "/images/services/project-cargo.jpg",
+    alt: "Industrial Project Cargo & Heavy Over-Dimensional Machinery Transport",
+  },
+  "express-surface-cargo": {
+    src: "/images/services/express.jpg",
+    alt: "Express Surface Cargo & Time-Critical Freight Delivery",
+  },
+  "chemical-liquid-transport": {
+    src: "/images/services/chemical.jpg",
+    alt: "Chemical & Liquid Transport - Safe ADR Compliant Logistics",
+  },
+};
+
+const WORKFLOW_STEPS = [
+  {
+    num: "01",
+    title: "Factory Pickup & Weighment",
+    subtitle: "Naroda, Vatva, Sanand & Changodar",
+    description: "Vehicles positioned within 15–30 minutes at your factory in Naroda, Vatva, Sanand, or Changodar. Thorough floor inspection, electronic weighment, and instant digital consignment notes (LR/Bilty).",
+    highlight: "Zero Deadhead Charges from Naroda Hub",
+    image: "/images/workflow/step-pickup.jpg",
+    alt: "Factory Pickup & Cargo Loading at Industrial Manufacturing Unit",
+    badge: "15–30 Min Dispatch",
+    icon: Scale
+  },
+  {
+    num: "02",
+    title: "GPS-Monitored Linehaul",
+    subtitle: "NH-48 & Dedicated Freight Corridors",
+    description: "Tamper-evident container seal applied. Dual-driver non-stop highway transit along NH-48 and dedicated freight corridors with 24/7 geo-fencing and automated checkpoint telemetry.",
+    highlight: "Real-Time Speed & Toll Tracking",
+    image: "/images/workflow/step-linehaul.jpg",
+    alt: "Interstate Highway Linehaul Container Truck - VSJ Logistics",
+    badge: "100% Tracked",
+    icon: Navigation
+  },
+  {
+    num: "03",
+    title: "Doorstep Unloading & e-POD",
+    subtitle: "Consignee Dock Delivery & Verification",
+    description: "Safe destination delivery at consignee docks in Mumbai, Delhi NCR, Bengaluru, or Pune. Physical stamped receiving copy (POD) scanned and uploaded within 6 hours of unloading.",
+    highlight: "Verified GST-Compliant Billing",
+    image: "/images/workflow/step-delivery.jpg",
+    alt: "Doorstep Consignee Warehouse Unloading and Digital e-POD",
+    badge: "Digital e-POD",
+    icon: PackageCheck
+  }
+];
+
+const LOCATION_IMAGES: Record<string, { src: string; alt: string }> = {
+  "logistics-services-naroda-gidc": {
+    src: "/images/locations/naroda.jpg",
+    alt: "Naroda GIDC Phase 1 Logistics Hub Ahmedabad",
+  },
+  "transporter-in-vatva-gidc": {
+    src: "/images/locations/vatva.jpg",
+    alt: "Vatva GIDC Chemical & Industrial Transporter",
+  },
+  "logistics-in-sanand-auto-hub": {
+    src: "/images/locations/sanand.jpg",
+    alt: "Sanand Auto & Engineering Logistics Hub",
+  },
+  "transport-company-in-changodar-moraiya": {
+    src: "/images/locations/changodar.jpg",
+    alt: "Changodar Moraiya Transport Company",
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="w-full bg-white">
@@ -220,74 +302,58 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {/* Step 1 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="w-12 h-12 rounded-2xl bg-brand-navy text-white flex items-center justify-center font-black text-lg">
-                    01
-                  </span>
-                  <Scale className="w-6 h-6 text-brand-orange" />
-                </div>
-                <h3 className="text-xl font-bold text-brand-navy">
-                  Factory Pickup & Weighment
-                </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
-                  Vehicles positioned within 15–30 minutes at your factory in Naroda, Vatva, Sanand, or Changodar. Thorough floor inspection, electronic weighment, and instant digital consignment notes (LR/Bilty).
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 text-xs font-semibold text-brand-navy flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Zero Deadhead Charges from Naroda Hub</span>
-              </div>
-            </div>
+            {WORKFLOW_STEPS.map((step) => {
+              const IconComponent = step.icon;
+              return (
+                <div
+                  key={step.num}
+                  className="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all flex flex-col justify-between space-y-6 group"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="w-12 h-12 rounded-2xl bg-brand-navy text-white flex items-center justify-center font-black text-lg shadow-sm">
+                          {step.num}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center border border-orange-100">
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                      </div>
+                      <span className="text-xs font-bold text-brand-orange bg-orange-50/80 border border-orange-200 px-3 py-1 rounded-full">
+                        {step.badge}
+                      </span>
+                    </div>
 
-            {/* Step 2 */}
-            <div className="bg-white p-8 rounded-3xl border border-brand-orange/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl">
-                100% Tracked
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center font-black text-lg">
-                    02
-                  </span>
-                  <Navigation className="w-6 h-6 text-brand-navy" />
-                </div>
-                <h3 className="text-xl font-bold text-brand-navy">
-                  GPS-Monitored Linehaul
-                </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
-                  Tamper-evident container seal applied. Dual-driver non-stop highway transit along NH-48 and dedicated freight corridors with 24/7 geo-fencing and automated checkpoint telemetry.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 text-xs font-semibold text-brand-navy flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Real-Time Speed & Toll Tracking</span>
-              </div>
-            </div>
+                    {/* Image as per step title */}
+                    <div className="relative h-44 sm:h-48 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
+                      <Image
+                        src={step.image}
+                        alt={step.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/80 via-transparent to-transparent pointer-events-none" />
+                      <span className="absolute bottom-2.5 left-3 text-xs font-semibold text-slate-200 drop-shadow">
+                        {step.subtitle}
+                      </span>
+                    </div>
 
-            {/* Step 3 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="w-12 h-12 rounded-2xl bg-brand-navy text-white flex items-center justify-center font-black text-lg">
-                    03
-                  </span>
-                  <PackageCheck className="w-6 h-6 text-emerald-600" />
+                    <h3 className="text-xl font-bold text-brand-navy group-hover:text-brand-orange transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 text-xs font-semibold text-brand-navy flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span>{step.highlight}</span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-brand-navy">
-                  Doorstep Unloading & e-POD
-                </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
-                  Safe destination delivery at consignee docks in Mumbai, Delhi NCR, Bengaluru, or Pune. Physical stamped receiving copy (POD) scanned and uploaded within 6 hours of unloading.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 text-xs font-semibold text-brand-navy flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Verified GST-Compliant Billing</span>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -345,8 +411,32 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <GoogleMapEmbed height="h-80 lg:h-96" />
+            <div className="lg:col-span-5 space-y-4">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+                <div className="relative h-48 sm:h-52 w-full">
+                  <Image
+                    src="/images/hubs/naroda-hub.jpg"
+                    alt="VSJ Logistics Solution - Naroda GIDC Phase 1 Operations Depot & Staging Yard"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/85 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
+                    <span className="font-bold flex items-center gap-1.5 bg-brand-navy/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
+                      <Building2 className="w-3.5 h-3.5 text-brand-orange" />
+                      <span>Fleet Depot &amp; Staging Yard</span>
+                    </span>
+                    <span className="font-mono text-[11px] font-bold bg-brand-orange text-white px-2.5 py-0.5 rounded-md">
+                      Naroda GIDC Phase 1
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                <GoogleMapEmbed height="h-56 sm:h-64" />
+              </div>
             </div>
           </div>
         </div>
@@ -368,56 +458,76 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CORE_SERVICES.map((service) => (
-              <div
-                key={service.slug}
-                className="group p-8 rounded-3xl bg-white border border-slate-200 hover:border-brand-orange/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-lg font-mono group-hover:bg-brand-orange group-hover:text-white transition-colors">
-                      {service.heroBadge}
-                    </span>
-                    <Truck className="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition-colors" />
+            {CORE_SERVICES.map((service) => {
+              const serviceImg = SERVICE_IMAGES[service.slug];
+              return (
+                <div
+                  key={service.slug}
+                  className="group p-6 sm:p-7 rounded-3xl bg-white border border-slate-200 hover:border-brand-orange/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-5"
+                >
+                  <div className="space-y-4">
+                    {/* Image as per service title */}
+                    {serviceImg && (
+                      <div className="relative h-48 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner group">
+                        <Image
+                          src={serviceImg.src}
+                          alt={serviceImg.alt}
+                          fill
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/85 via-transparent to-transparent pointer-events-none" />
+                        <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white bg-brand-navy/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20">
+                          {service.heroBadge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-lg font-mono group-hover:bg-brand-orange group-hover:text-white transition-colors">
+                        Verified Fleet
+                      </span>
+                      <Truck className="w-5 h-5 text-slate-400 group-hover:text-brand-orange transition-colors" />
+                    </div>
+
+                    <h3 className="text-xl font-bold text-brand-navy group-hover:text-brand-orange transition-colors">
+                      <Link href={service.url}>
+                        {shortName(service)}
+                      </Link>
+                    </h3>
+
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      {service.summary}
+                    </p>
+
+                    <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                      {service.keyHighlights.slice(0, 3).map((hl, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="line-clamp-1">{hl}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <h3 className="text-xl font-bold text-brand-navy group-hover:text-brand-orange transition-colors">
-                    <Link href={service.url}>
-                      {shortName(service)}
+                  <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                    <Link
+                      href={service.url}
+                      className="min-h-[44px] text-xs font-bold text-brand-navy group-hover:text-brand-orange flex items-center gap-1.5 transition-colors"
+                    >
+                      <span>View Specifications</span>
+                      <ArrowRight className="w-4 h-4 text-brand-orange group-hover:translate-x-1 transition-transform" />
                     </Link>
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                    {service.summary}
-                  </p>
-
-                  <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
-                    {service.keyHighlights.slice(0, 3).map((hl, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span className="line-clamp-1">{hl}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <Link
+                      href="/get-a-quote"
+                      className="min-h-[44px] text-xs font-bold text-brand-orange hover:underline flex items-center"
+                    >
+                      Get Quote
+                    </Link>
+                  </div>
                 </div>
-
-                <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link
-                    href={service.url}
-                    className="min-h-[44px] text-xs font-bold text-brand-navy group-hover:text-brand-orange flex items-center gap-1.5 transition-colors"
-                  >
-                    <span>View Specifications</span>
-                    <ArrowRight className="w-4 h-4 text-brand-orange group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <Link
-                    href="/get-a-quote"
-                    className="min-h-[44px] text-xs font-bold text-brand-orange hover:underline flex items-center"
-                  >
-                    Get Quote
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -448,42 +558,63 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {AHMEDABAD_LOCATIONS.map((loc) => (
-              <div
-                key={loc.slug}
-                className="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-navy/30 transition-all flex flex-col justify-between space-y-4"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-lg">
-                      {loc.heroBadge}
-                    </span>
-                    <MapPin className="w-4 h-4 text-brand-orange" />
+            {AHMEDABAD_LOCATIONS.map((loc) => {
+              const locImg = LOCATION_IMAGES[loc.slug];
+              return (
+                <div
+                  key={loc.slug}
+                  className="bg-slate-50 p-5 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-navy/30 transition-all flex flex-col justify-between space-y-4 group"
+                >
+                  <div className="space-y-3">
+                    {locImg && (
+                      <div className="relative h-32 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
+                        <Image
+                          src={locImg.src}
+                          alt={locImg.alt}
+                          fill
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/75 via-transparent to-transparent pointer-events-none" />
+                        <span className="absolute bottom-2 left-2.5 text-[10px] font-bold text-white bg-brand-navy/85 backdrop-blur-md px-2 py-0.5 rounded">
+                          {loc.heroBadge}
+                        </span>
+                      </div>
+                    )}
+
+                    {!locImg && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-lg">
+                          {loc.heroBadge}
+                        </span>
+                        <MapPin className="w-4 h-4 text-brand-orange" />
+                      </div>
+                    )}
+
+                    <h3 className="text-base font-bold text-brand-navy leading-snug group-hover:text-brand-orange transition-colors">
+                      <Link href={loc.url}>
+                        {shortName(loc)}
+                      </Link>
+                    </h3>
+
+                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                      {loc.summary}
+                    </p>
                   </div>
 
-                  <h3 className="text-base font-bold text-brand-navy leading-snug">
-                    <Link href={loc.url} className="hover:text-brand-orange transition-colors">
-                      {shortName(loc)}
+                  <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+                    <Link
+                      href={loc.url}
+                      className="min-h-[40px] text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1"
+                    >
+                      <span>View Hub</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
-                  </h3>
-
-                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-                    {loc.summary}
-                  </p>
+                    <span className="text-[11px] font-mono text-slate-500">15-30m Placement</span>
+                  </div>
                 </div>
-
-                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
-                  <Link
-                    href={loc.url}
-                    className="min-h-[40px] text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1"
-                  >
-                    <span>View Hub</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  <span className="text-[11px] font-mono text-slate-500">15-30m Placement</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
