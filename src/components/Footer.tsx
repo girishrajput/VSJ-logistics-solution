@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
             <div>
               <h4 className="text-white text-sm font-bold uppercase tracking-wider">Naroda GIDC Hub Base</h4>
-              <p className="text-xs text-slate-300 mt-0.5">FF 06, Madhur Milan Estate, Phase 1</p>
+              <p className="text-xs text-slate-300 mt-0.5">FF 06, Madhur Milan Estate, Phase 1, GIDC, Naroda, Ahmedabad - 382330</p>
               <p className="text-[11px] text-slate-400 mt-1">15-Min Positioning across Ahmedabad Industrial Estates</p>
             </div>
           </div>
@@ -50,19 +50,24 @@ export default function Footer() {
             </div>
             <div>
               <h4 className="text-white text-sm font-bold uppercase tracking-wider">24/7 Dispatch Control</h4>
-              <p className="text-xs text-slate-300 mt-0.5">Active Fleet Tracking & Helpline</p>
+              <p className="text-xs text-slate-300 mt-0.5">Active Fleet Tracking &amp; Helpline</p>
               <p className="text-[11px] text-slate-400 mt-1">99.4% On-Time Scheduled Line-Haul Delivery</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3.5">
             <div className="w-10 h-10 rounded-lg bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/20">
-              <Award className="w-5 h-5" />
+              <Mail className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-white text-sm font-bold uppercase tracking-wider">Leadership Oversight</h4>
-              <p className="text-xs text-slate-300 mt-0.5">Directed by Vikas Kumar</p>
-              <p className="text-[11px] text-slate-400 mt-1">Direct Commercial Accountability & Escalations</p>
+              <h4 className="text-white text-sm font-bold uppercase tracking-wider">Official Inquiries</h4>
+              <a 
+                href={`mailto:${COMPANY_INFO.email}`} 
+                className="text-xs text-amber-300 hover:text-brand-orange hover:underline font-mono mt-0.5 block"
+              >
+                {COMPANY_INFO.email}
+              </a>
+              <p className="text-[11px] text-slate-400 mt-1">Direct Commercial Quotation &amp; Invoicing Support</p>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
   ShieldCheck, 
   Clock, 
   MapPin, 
+  Mail, 
   Phone, 
   MessageCircle, 
   ArrowRight, 
@@ -670,18 +671,25 @@ export default function HomePage() {
                 and live GPS telemetry."
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-6 text-sm text-slate-300">
+              <div className="pt-2 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-300">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span>GSTIN: {COMPANY_INFO.gstNumber}</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Truck className="w-4 h-4 text-brand-orange" />
-                  <span>150+ Managed Fleet</span>
+                  <MapPin className="w-4 h-4 text-brand-orange" />
+                  <span>FF 06, Madhur Milan Estate, Phase 1, GIDC, Naroda</span>
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-amber-400" />
-                  <span>99.4% On-Time Delivery</span>
+                <a 
+                  href={`mailto:${COMPANY_INFO.email}`} 
+                  className="flex items-center gap-1.5 hover:text-brand-orange transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-amber-400" />
+                  <span>{COMPANY_INFO.email}</span>
+                </a>
+                <span className="flex items-center gap-1.5 text-emerald-400">
+                  <Clock className="w-4 h-4" />
+                  <span>24/7 Dispatch Control</span>
                 </span>
               </div>
             </div>
